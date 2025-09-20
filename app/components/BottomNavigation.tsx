@@ -44,7 +44,13 @@ export function BottomNavigation() {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-50">
+    <nav 
+      className="fixed bottom-0 left-0 right-0 px-4 py-2 z-50 border-t"
+      style={{ 
+        backgroundColor: 'var(--color-surface)', 
+        borderColor: 'var(--color-border)' 
+      }}
+    >
       <div className="flex justify-around items-center max-w-md mx-auto">
         {navigationItems.map((item) => {
           const isActive = location.pathname === item.href;
@@ -52,16 +58,22 @@ export function BottomNavigation() {
             <Link
               key={item.name}
               to={item.href}
-              className={`flex flex-col items-center py-2 px-3 rounded-lg transition-colors ${
-                isActive
-                  ? "text-blue-600 bg-blue-50"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              }`}
+              className="flex flex-col items-center py-2 px-3 rounded-lg transition-colors"
+              style={{
+                color: isActive ? 'var(--color-accent)' : 'var(--color-text-secondary)',
+                backgroundColor: isActive ? 'var(--color-accent)' : 'transparent',
+                '--tw-bg-opacity': isActive ? '0.1' : '0'
+              } as React.CSSProperties & { '--tw-bg-opacity': string }}
             >
-              <span className={`${isActive ? "text-blue-600" : "text-gray-500"}`}>
+              <span style={{ color: isActive ? 'var(--color-accent)' : 'var(--color-text-tertiary)' }}>
                 {item.icon}
               </span>
-              <span className="text-xs mt-1 font-medium">{item.name}</span>
+              <span 
+                className="text-xs mt-1 font-medium"
+                style={{ color: isActive ? 'var(--color-accent)' : 'var(--color-text-secondary)' }}
+              >
+                {item.name}
+              </span>
             </Link>
           );
         })}
