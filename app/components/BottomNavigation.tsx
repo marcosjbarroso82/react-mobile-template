@@ -60,17 +60,16 @@ export function BottomNavigation() {
               to={item.href}
               className="flex flex-col items-center py-2 px-3 rounded-lg transition-colors"
               style={{
-                color: isActive ? 'var(--color-accent)' : 'var(--color-text-secondary)',
                 backgroundColor: isActive ? 'var(--color-accent)' : 'transparent',
-                '--tw-bg-opacity': isActive ? '0.1' : '0'
+                '--tw-bg-opacity': isActive ? '1' : '0'
               } as React.CSSProperties & { '--tw-bg-opacity': string }}
             >
-              <span style={{ color: isActive ? 'var(--color-accent)' : 'var(--color-text-tertiary)' }}>
+              <span style={{ color: isActive ? 'white' : 'var(--color-text-tertiary)' }}>
                 {item.icon}
               </span>
               <span 
                 className="text-xs mt-1 font-medium"
-                style={{ color: isActive ? 'var(--color-accent)' : 'var(--color-text-secondary)' }}
+                style={{ color: isActive ? 'white' : 'var(--color-text-secondary)' }}
               >
                 {item.name}
               </span>
